@@ -16,6 +16,35 @@ router.get('/testpy', function(req, res, next) {
   console.log(syncClone);
   res.render('index', { title: '<3 <3 Express' });
 });
+router.get('/trycmd', function(req, res, next) {
+	//const syncClone=cmd.runSync('python3 ~/yolov5/segment/predict.py --weights https://raw.githubusercontent.com/andythebreaker/pythonRelay4y5v7fnd/main/ttplapts/best11.pt --source https://images.chinatimes.com/newsphoto/2020-03-11/900/20200311005314.jpg --device cpu --conf 0.25 --save-txt --save-conf --save-crop');
+  //console.log(syncClone);
+	console.log(req.query.mods);
+	console.log("#######################################")
+	console.log(req.query.sous);
+
+	console.log("#######################################")
+	console.log(req.query.conf);
+	
+	console.log("#######################################")
+	console.log(req.query.name);
+  res.render('index', { title: 'E> E> Express' });
+});
+
+router.get('/cmd', function(req, res, next) {
+	const syncClone=cmd.runSync(`python3 ~/yolov5/segment/predict.py --weights ${req.query.mods} --source ${req.query.sous} --device 0 --conf ${req.query.conf} --save-txt --save-conf --save-crop --name ${req.query.name}`);
+  console.log(syncClone);
+//console.log(req.query.mods);
+//	console.log("#######################################")
+//	console.log(req.query.sous);
+//
+//	console.log("#######################################")
+//	console.log(req.query.conf);
+//	
+//	console.log("#######################################")
+//	console.log(req.query.name);
+  res.render('index', { title: 'E> E> Express' });
+});
 
 
 
